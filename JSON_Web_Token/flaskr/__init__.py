@@ -114,11 +114,18 @@ def requires_auth(permission=''):
             except:
                 abort(401)
 
-            def check_permission(permission, payload):
+            def check_permissions(permission, payload):
                 if 'permissions' not in payload:
-                    abort(400)
+                    raise AuthError({
+                        'code': 'invalid_claims',
+                        'description': 'Permissions not included in JWT.'
+                    }, 400)
+
                 if permission not in payload['permissions']:
-                    abort(403)
+                    raise AuthError({
+                        'code': 'unauthorized',
+                        'description': 'Permission not found.'
+                    }, 403)
                 return True
 
             return f(payload, *args, **kwargs)
