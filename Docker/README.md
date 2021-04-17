@@ -1,11 +1,11 @@
 # Creation of dockerfiles
 
-* create a new directory
+* create a new directory  
 mkdir Example1  
 cd Example1  
-* create a file in the present working directory
+* create a file in the present working directory  
 touch Dockerfile  
-* open the file in any text editor, such as VS Code
+* open the file in any text editor, such as VS Code  
 code .  
   
 # Template for flask-dockerfile
